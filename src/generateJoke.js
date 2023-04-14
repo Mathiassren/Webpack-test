@@ -13,3 +13,22 @@ function generateJoke() {
 }
 
 export default generateJoke;
+
+//Error
+const fetchHttpStat = () => {
+  axios
+    .get("httpstat.us/103")
+    .then((response) => {
+      console.log(response.data);
+    })
+
+    .catch((error) => {
+      console.log(error.description);
+      const errorMessage = error.response.data.description;
+      console.log(errorMessage);
+      document.getElementById("error-handling").textContent =
+        "Der er er sket en fejl prøv igen senere!";
+    });
+};
+
+fetchHttpStat();
